@@ -24,7 +24,12 @@ void frameBufferResizeCallback(GLFWwindow* window, int width, int height){
    glViewport(0, 0, width, height);
 }
 
-int main(void)
+#include <thread>
+#include <iostream>
+using namespace std;
+
+
+int test()
 {
     GLFWwindow* window;
 
@@ -164,4 +169,15 @@ int main(void)
     glfwDestroyWindow(window);
     glfwTerminate();
     return 0;
+}
+
+
+int main(void){
+std::thread worker(test);
+
+worker.detach();
+//test();
+getchar();
+
+return 0;
 }
